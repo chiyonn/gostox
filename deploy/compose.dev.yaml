@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env.global
+      - .env.frontend
+    volumes:
+      - ../frontend:/app
+    ports:
+      - "5173:5173"
+    working_dir: /app

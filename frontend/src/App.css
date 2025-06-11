@@ -1,0 +1,50 @@
+/* https://colorffy.com/dark-theme-generator?colors=885FC9-121212 */
+
+:root {
+    /* Base colors */
+    --clr-dark-a0: #000000;
+    --clr-light-a0: #ffffff;
+
+    /** Theme primary colors */
+    --clr-primary-a0: #885fc9;
+    --clr-primary-a10: #9670cf;
+    --clr-primary-a20: #a481d6;
+    --clr-primary-a30: #b193dc;
+    --clr-primary-a40: #bfa4e2;
+    --clr-primary-a50: #ccb6e8;
+
+    /** Theme surface colors */
+    --clr-surface-a0: #121212;
+    --clr-surface-a10: #282828;
+    --clr-surface-a20: #3f3f3f;
+    --clr-surface-a30: #575757;
+    --clr-surface-a40: #717171;
+    --clr-surface-a50: #8b8b8b;
+
+    /** Theme tonal surface colors */
+    --clr-surface-tonal-a0: #1d1a22;
+    --clr-surface-tonal-a10: #322f37;
+    --clr-surface-tonal-a20: #48454d;
+    --clr-surface-tonal-a30: #605d64;
+    --clr-surface-tonal-a40: #78767c;
+    --clr-surface-tonal-a50: #929094;
+
+    /* Final assignables */
+    --font-main: var(--clr-light-a0);
+    --font-disabled: var(--clr-surface-tonal-a50);
+    --bg-main: var(--clr-surface-a0);
+    --bg-sub1: var(--clr-surface-a20);
+    --border-color: var(--clr-surface-a30);
+    --border-main: 1px solid var(--border-color);
+}
+
+body {
+    font-family: monospace;
+    color: var(--font-main);
+    background: var(--bg-main);
+}
+
+input {
+    color: var(--clr-light-a0);
+    background-color: var(--clr-surface-a10);
+}

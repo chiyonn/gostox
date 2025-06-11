@@ -1,0 +1,14 @@
+.container {
+    display: grid;
+    gap: 1px;
+    background-color: var(--border-color);
+    border: var(--border-main);
+}
+
+.header {
+    background-color: var(--bg-sub1);
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+}
