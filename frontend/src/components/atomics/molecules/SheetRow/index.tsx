@@ -11,7 +11,7 @@ type SheetRowProps = {
   rowIndex: number;
   rowData: Record<string, unknown>;
   columns: ColumnDef[];
-  onCellChange: () => void;
+  onCellChange: (rowIndex: number, key: string, newValue: unknown) => void;
 };
 
 const SheetRow = ({ rowIndex, rowData, columns, onCellChange }: SheetRowProps) => {
@@ -25,7 +25,7 @@ const SheetRow = ({ rowIndex, rowData, columns, onCellChange }: SheetRowProps) =
           value={rowData[col.key]}
           editable={col.editable}
           validate={col.validate}
-          onChange={onCellChange}
+          onChange={(newValue) => onCellChange(rowIndex, col.key, newValue)}
         />
       ))}
     </>
