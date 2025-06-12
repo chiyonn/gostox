@@ -184,13 +184,11 @@ const EstimatesSheet = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <Sheet
-        columns={columns}
-        data={data}
-        onCellChange={handleCellChange}
-      />
-    </div>
+    <Sheet
+      columns={columns}
+      data={data}
+      onCellChange={handleCellChange}
+    />
   );
 };
 
