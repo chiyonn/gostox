@@ -8,10 +8,16 @@ type RouteParams = {
   asin: string;
 };
 
+type ProductDetail = {
+  title: string;
+  categories: number[];
+  imageCSV: string;
+}
+
 const CatalogDetailPage = () => {
   const { asin } = useParams<RouteParams>();
   const navigate = useNavigate();
-  const [peepaDetail, setPeepaDetail] = useState<any>(null);
+  const [peepaDetail, setPeepaDetail] = useState<ProductDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
@@ -24,8 +30,8 @@ const CatalogDetailPage = () => {
     (async () => {
       try {
         const res = await peepaClient.get(`/products/${asin}`);
-        console.log(res.data);
-        setPeepaDetail(res.data);
+        const detail = res.data as ProductDetail
+        setPeepaDetail(detail);
       } catch (err: any) {
         if (err.response?.status === 404) {
           setNotFound(true);
@@ -46,9 +52,14 @@ const CatalogDetailPage = () => {
     return <div className={styles.container}>読み込み中...</div>;
   }
 
+  if (!peepaDetail) {
+    return <div className={styles.container}>データがありません。</div>;
+  }
+
   return (
     <div className={styles.container}>
       <AsinTip asin={asin!} />
+      <p>{peepaDetail?.title}</p>
     </div>
   );
 };
