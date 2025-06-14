@@ -3,19 +3,19 @@ import styles from './MainLayout.module.css';
 import type { FC } from 'react';
 
 const MainLayout: FC = () => {
-    return (
-        <div className={styles.container}>
-            <header className={styles.header}></header>
-            <div className={styles.contentWrapper}>
-                <aside className={styles.sidebarLeft}></aside>
-                <main className={styles.main}>
-                    <Outlet />
-                </main>
-                <aside className={styles.sidebarRight}></aside>
-            </div>
-            <footer className={styles.footer}></footer>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <header className={styles.header}></header>
+      <div className={styles.contentWrapper}>
+        <aside className={styles.sidebarLeft}></aside>
+        <main className={styles.main}>
+          <Outlet />
+        </main>
+        <aside className={styles.sidebarRight}></aside>
+      </div>
+      <footer className={styles.footer}></footer>
+    </div>
+  );
 };
 
 export default MainLayout;
