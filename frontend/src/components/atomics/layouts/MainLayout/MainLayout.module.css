@@ -22,5 +22,5 @@
 
 .main {
   display: flex;
-  overflow: scroll;
+  overflow-x: scroll;
 }
