@@ -1,0 +1,3 @@
+[submodule "peepa-go"]
+	path = peepa-go
+	url = https://github.com/chiyonn/peepa-go.git
