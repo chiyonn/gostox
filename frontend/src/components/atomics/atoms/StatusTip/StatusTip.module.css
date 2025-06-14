@@ -1,0 +1,10 @@
+.container {
+  color: var(--font-main);
+  background-color: var(--bg-main);
+  width: 100%;
+  cursor: pointer;
+}
+
+.container option {
+  background-color: var(--bg-main);
+}

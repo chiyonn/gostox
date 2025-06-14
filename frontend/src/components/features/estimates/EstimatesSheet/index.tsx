@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { validateStatus, validateZeroOrMore, validateDateISO } from "@/utils/validator";
 import Sheet from '@/components/atomics/organisms/Sheet';
 import AsinTip from '@/components/atomics/atoms/AsinTip';
-import styles from './EstimatesSheet.module.css';
+import StatusTip from '@/components/atomics/atoms/StatusTip';
 
 const dummyData = [
   {
@@ -148,7 +148,12 @@ const dummyData = [
 ];
 
 const columns = [
-  { key: 'asin', label: 'ASIN', editable: false },
+  {
+    key: 'asin',
+    label: 'ASIN',
+    editable: false,
+    render: (value) => <AsinTip asin={String(value)} />
+  },
   { key: 'title', label: '商品名', editable: false },
   { key: 'salesRankDrops30', label: '下降30', editable: false },
   { key: 'salesRankDrops90', label: '下降90', editable: false },
@@ -164,15 +169,20 @@ const columns = [
   { key: 'costTotalJpy', label: '仕入(円)', editable: false },
   { key: 'profitRatio', label: '利益率', editable: false },
   { key: 'updatedAt', label: '最終更新', editable: false, validate: validateDateISO },
-  { key: 'status', label: 'ステータス', editable: false, validate: validateStatus },
+  {
+    key: 'status',
+    label: 'ステータス',
+    editable: true,
+    validate: validateStatus,
+    render: (value, onChange) => (
+      <StatusTip value={String(value)} onChange={(v) => onChange?.(v)} />
+    )
+  },
   { key: 'note', label: '備考', editable: true },
 ];
 
 const EstimatesSheet = () => {
-  const [data, setData] = useState(dummyData.map((row) => ({
-    ...row,
-    asin: <AsinTip asin={String(row.asin)} />
-  })));
+  const [data, setData] = useState(dummyData);
 
   const handleCellChange = (rowIndex: number, key: string, newValue: unknown) => {
     console.log(newValue);
