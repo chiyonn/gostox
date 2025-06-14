@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import styles from './AsinTip.module.css';
 
@@ -28,6 +29,12 @@ const AsinTip = ({ asin }: Props) => {
 
       {open && (
         <div className={styles.menu}>
+          <Link
+            to={`/catalog/${asin}`}
+            className={styles.menuItem}
+          >
+            詳細を開く
+          </Link>
           <a
             href={`https://amazon.co.jp/dp/${asin}`}
             target="_blank"
