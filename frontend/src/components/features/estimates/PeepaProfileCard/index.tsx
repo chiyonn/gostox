@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import AsinTip from '@/components/atomics/atoms/AsinTip';
-import peepaClient from '@/utils/peepa';
 import styles from './PeepaProfileCard.module.css';
 
 type Offer = {
@@ -25,7 +23,7 @@ type Offer = {
   LastStockUpdate: number;
 };
 
-type PeepaProfile = {
+export type PeepaProfile = {
   ASIN: string;
   Title: string;
   RootCategory: number;
@@ -34,41 +32,11 @@ type PeepaProfile = {
   Brand: string;
   Manifacturer: string;
   Offers: Offer[];
-  LastPriceChange: string; // ISO date string expected from API
+  LastPriceChange: string;
   LastUpdate: string;
 };
 
-const PeepaProfileCard = ({ asin }: { asin: string }) => {
-  const [profile, setProfile] = useState<PeepaProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await peepaClient.get(`/products/${asin}`);
-        const detail = res.data as PeepaProfile;
-        setProfile(detail);
-      } catch (err: any) {
-        if (err.response?.status === 404) {
-          setNotFound(true);
-        } else {
-          console.warn('取得失敗:', err);
-        }
-      } finally {
-        setLoading(false);
-      }
-    })();
-  }, [asin]);
-
-  if (loading) {
-    return <div className={styles.container}>読み込み中...</div>;
-  }
-
-  if (notFound || !profile) {
-    return <div className={styles.container}>指定されたASINの商品が見つかりません。</div>;
-  }
-
+const PeepaProfileCard = ({ profile }: { profile: PeepaProfile }) => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
