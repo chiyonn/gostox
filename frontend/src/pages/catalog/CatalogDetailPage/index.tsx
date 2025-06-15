@@ -20,6 +20,9 @@ const CatalogDetailPage = () => {
 
   return (
     <div className={styles.container}>
+      <p>在庫情報</p>
+      <div>stock info here</div>
+      <p>Peepa情報</p>
       <PeepaProfileCard asin={asin} />
     </div>
   );

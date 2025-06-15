@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { validateStatus, validateZeroOrMore, validateDateISO } from "@/utils/validator";
 import Sheet from '@/components/atomics/organisms/Sheet';
 import AsinTip from '@/components/atomics/atoms/AsinTip';
@@ -183,6 +183,19 @@ const columns = [
 
 const EstimatesSheet = () => {
   const [data, setData] = useState(dummyData);
+
+  useEffect(() => {
+    const fetchEstimates = async () => {
+      try {
+        // 本来はAPI呼び出しなどを書くべき場所
+        setData([]); // 仮置き: データクリア
+      } catch (error) {
+        console.warn(`failed to fetch estimates: ${error}`);
+      }
+    };
+
+    fetchEstimates();
+  }, []); // ← 依存配列を忘れずに
 
   const handleCellChange = (rowIndex: number, key: string, newValue: unknown) => {
     console.log(newValue);
