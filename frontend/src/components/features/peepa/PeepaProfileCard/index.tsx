@@ -1,6 +1,6 @@
 import ImageSmall from '@/components/atomics/atoms/ImageSmall';
 import AsinTip from '@/components/atomics/organisms/AsinTip';
-import OffersStatus from "@/components/atomics/organisms/OfferStatus";
+import NumOfOffersStatus from "@/components/atomics/organisms/NumOfOffersStatus";
 import OfferCard from '@/components/features/peepa/OfferCard';
 import Tip from "@/components/atomics/atoms/Tip";
 import { keepaMinutesToDate } from '@/utils/peepa';
@@ -17,7 +17,7 @@ const PeepaProfileCard = ({ profile }: { profile: PeepaProfile }) => {
       <h1 className={styles.title}>{profile.Title}</h1>
 
       <div className={styles.screenings}>
-        <OffersStatus offers={profile?.Offers?.length} />
+        <NumOfOffersStatus offers={profile?.Offers?.length} />
       </div>
 
       <div className={styles.meta}>
@@ -34,6 +34,10 @@ const PeepaProfileCard = ({ profile }: { profile: PeepaProfile }) => {
           <p>基本情報</p>
           <table>
             <tbody>
+              <tr>
+                <th>販売価格:</th>
+                <td>{profile.Stats.buyBoxPrice}</td>
+              </tr>
               <tr>
                 <th>ブランド:</th>
                 <td>{profile.Brand}</td>

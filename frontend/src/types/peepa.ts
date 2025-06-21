@@ -28,6 +28,10 @@ type Offer = {
   LastStockUpdate: number;
 };
 
+export type Stats = {
+  BuyBoxPrice: number;
+}
+
 export type PeepaProfile = {
   ASIN: string;
   Title: string;
@@ -37,6 +41,7 @@ export type PeepaProfile = {
   Brand: string;
   Manifacturer: string;
   Offers: Offer[];
+  Stats: Stats;
   LastPriceChange: number;
   LastUpdate: number;
 };

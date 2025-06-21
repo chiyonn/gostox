@@ -198,7 +198,6 @@ const EstimatesSheet = () => {
   }, []); // ← 依存配列を忘れずに
 
   const handleCellChange = (rowIndex: number, key: string, newValue: unknown) => {
-    console.log(newValue);
     setData((prev) =>
       prev.map((row, i) =>
         i === rowIndex ? { ...row, [key]: newValue } : row
