@@ -6,7 +6,9 @@
 }
 
 .header {
+  display: flex;
   text-align: center;
+  padding: 8px;
 }
 
 .footer {
@@ -24,4 +26,17 @@
   flex: 1;
   display: flex;
   overflow-x: scroll;
+}
+
+aside {
+  background-color: var(--sidebar-bg);
+  padding: 16px;
+}
+
+.leftMenuBtn {
+  color: var(--font-main);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
 }

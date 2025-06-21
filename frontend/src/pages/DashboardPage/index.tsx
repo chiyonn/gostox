@@ -5,7 +5,6 @@ import EstimatesSheet from '@/components/features/estimates/EstimatesSheet';
 const DashboardPage = () => {
   return (
     <div className={styles.container}>
-      <AsinSearch />
       <EstimatesSheet />
     </div>
   );

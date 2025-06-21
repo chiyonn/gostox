@@ -29,6 +29,12 @@
   --clr-surface-tonal-a40: #78767c;
   --clr-surface-tonal-a50: #929094;
 
+  /** Values **/
+  --radius1: 4px;
+  --radius2: 8px;
+  --radius3: 16px;
+  --radius-full: 50px;
+
   /* Final assignables */
   --font-main: var(--clr-light-a0);
   --font-disabled: var(--clr-surface-tonal-a50);
@@ -37,9 +43,17 @@
   --border-color: var(--clr-surface-a30);
   --border-main: 1px solid var(--border-color);
 
-  --radius1: 4px;
-  --radius2: 8px;
-  --radius3: 16px;
+  --sidebar-bg: var(--clr-surface-a10);
+
+  --form-bg: var(--clr-surface-a10);
+  --form-border: 1px solid var(--clr-surface-a10);
+  --form-placeholder: var(--clr-surface-a50);
+  --form-outline: 2px solid var(--clr-primary-a50);
+  --form-padding: 4px 12px;
+
+  --button-padding: 6px 12px;
+  --button-primary-font: var(--clr-surface-a0);
+  --button-primary-bg: var(--clr-primary-a0);
 }
 
 body {
