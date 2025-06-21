@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
+
+import Tip from '@/components/atomics/atoms/Tip';
 import styles from './AsinTip.module.css';
 
 type Props = {
@@ -23,9 +25,7 @@ const AsinTip = ({ asin }: Props) => {
 
   return (
     <div className={styles.container} ref={ref}>
-      <button className={styles.asinBtn} onClick={() => setOpen(!open)}>
-        {asin}
-      </button>
+      <Tip className={styles.asinBtn} label={asin} onClick={() => setOpen(!open)} />
 
       {open && (
         <div className={styles.menu}>

@@ -8,7 +8,7 @@ const AsinSearch = () => {
 
   const handleSearch = () => {
     const trimmed = asin.trim();
-    if (trimmed) {
+    if (trimmed && trimmed.startsWith('B0')) {
       navigate(`/catalog/${trimmed}`);
     }
   };

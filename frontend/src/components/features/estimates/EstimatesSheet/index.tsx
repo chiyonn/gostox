@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { validateStatus, validateZeroOrMore, validateDateISO } from "@/utils/validator";
 import Sheet from '@/components/atomics/organisms/Sheet';
-import AsinTip from '@/components/atomics/atoms/AsinTip';
-import StatusTip from '@/components/atomics/atoms/StatusTip';
+import AsinTip from '@/components/atomics/organisms/AsinTip';
+import EstimateStatusTip from '@/components/atomics/atoms/EstimateStatusTip';
 
 const dummyData = [
   {
@@ -175,7 +175,7 @@ const columns = [
     editable: true,
     validate: validateStatus,
     render: (value, onChange) => (
-      <StatusTip value={String(value)} onChange={(v) => onChange?.(v)} />
+      <EstimateStatusTip value={String(value)} onChange={(v) => onChange?.(v)} />
     )
   },
   { key: 'note', label: '備考', editable: true },

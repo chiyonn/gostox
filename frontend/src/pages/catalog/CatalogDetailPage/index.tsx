@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import ProfileComparisonCard from '@/components/features/estimates/ProfileComparisonCard';
+import PeepaProfileCard from '@/components/features/peepa/PeepaProfileCard';
 import { fetchInventory, fetchPeepa } from '@/api';
 import type {
   InventoryProfile,
@@ -17,6 +18,7 @@ const CatalogDetailPage = () => {
   const [original, setOriginal] = useState<InventoryProfile | null>(null);
   const [source, setSource] = useState<PeepaProfile | null>(null);
   const [merged, setMerged] = useState<MergedProfile | null>(null);
+  const [error, setError] = useState<string | null>(null); // ← 追加
 
   useEffect(() => {
     if (!asin) {
@@ -25,17 +27,24 @@ const CatalogDetailPage = () => {
     }
 
     const fetchAll = async () => {
-      const orig = await fetchInventory(asin);
-      const src = await fetchPeepa(asin);
-      setOriginal(orig);
-      setSource(src);
-      setMerged({
-        ...orig,
-        _sourceMap: Object.keys(orig).reduce((acc, k) => {
-          acc[k as keyof InventoryProfile] = 'original';
-          return acc;
-        }, {} as Record<keyof InventoryProfile, 'original' | 'source'>)
-      });
+      try {
+        const orig = await fetchInventory(asin);
+        const src = await fetchPeepa(asin);
+
+        setOriginal(orig);
+        setSource(src);
+        setMerged({
+          ...orig,
+          _sourceMap: Object.keys(orig).reduce((acc, k) => {
+            acc[k as keyof InventoryProfile] = 'original';
+            return acc;
+          }, {} as Record<keyof InventoryProfile, 'original' | 'source'>)
+        });
+
+      } catch (err: any) {
+        console.error('データ取得に失敗しました:', err);
+        setError('データの読み込みに失敗しました。時間をおいて再度お試しください。');
+      }
     };
 
     fetchAll();
@@ -68,10 +77,17 @@ const CatalogDetailPage = () => {
     setMerged(result);
   };
 
-  if (!original || !source || !merged) return <div>読み込み中…</div>;
+  if (error) {
+    return <div className={styles.error}>{error}</div>;
+  }
+
+  if (!original || !source || !merged) {
+    return <div>読み込み中…</div>;
+  }
 
   return (
     <div className={styles.container}>
+      <PeepaProfileCard profile={source} />
       <ProfileComparisonCard
         original={original}
         source={source}

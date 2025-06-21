@@ -3,6 +3,27 @@
 }
 
 .container input {
-  border: none;
+  font-family: monospace;
+  background-color: var(--form-bg);
+  border: var(--form-border);
+  border-radius: var(--radius-full);
   outline: none;
+  padding: var(--form-padding);
+  height: 2rem;
+}
+
+.container input::focus {
+  outline: var(--form-outline);
+}
+
+.container input::placeholder {
+  color: var(--form-placeholder);
+}
+
+.container button {
+  color: var(--button-primary-font);
+  background-color: var(--button-primary-bg);
+  padding: var(--button-padding);
+  border: none;
+  border-radius: var(--radius1);
 }
