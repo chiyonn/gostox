@@ -59,7 +59,7 @@ const CatalogDetailPage = () => {
     const result: any = { ...original, _sourceMap: { ...merged._sourceMap } };
 
     for (const key in source) {
-      if (original[key] == null && source[key] != null) {
+      if (source[key] != null) {
         result[key] = source[key];
         result._sourceMap[key] = 'source';
       }

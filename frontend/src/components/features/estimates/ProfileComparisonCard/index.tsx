@@ -26,6 +26,10 @@ const ProfileComparisonCard = ({
 }: Props) => {
   return (
     <div className={styles.container}>
+      <div>
+        <div>ASIN: {source.ASIN}</div>
+        <button onClick={onMergeAll}>すべて適用</button>
+      </div>
       {fields.map(({ field, label }) => (
         <MergedProfileField
           key={field}
