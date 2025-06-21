@@ -11,10 +11,10 @@ type Props = {
 };
 
 const fields: { field: keyof InventoryProfile; label: string }[] = [
+  { field: 'Title', label: '商品名' },
   { field: 'Brand', label: 'ブランド' },
   { field: 'Manifacturer', label: 'メーカー' },
-  { field: 'Title', label: '商品名' },
-  { field: 'LastUpdate', label: '更新日時' },
+  { field: 'RootCategory', label: 'カテゴリ' },
 ];
 
 const ProfileComparisonCard = ({
