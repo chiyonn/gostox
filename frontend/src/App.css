@@ -49,9 +49,9 @@
   --form-border: 1px solid var(--clr-surface-a10);
   --form-placeholder: var(--clr-surface-a50);
   --form-outline: 2px solid var(--clr-primary-a50);
-  --form-padding: 4px 12px;
+  --form-padding: 0 12px;
 
-  --button-padding: 6px 12px;
+  --button-padding: 0 12px;
   --button-primary-font: var(--clr-surface-a0);
   --button-primary-bg: var(--clr-primary-a0);
 }
