@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 import ProfileComparisonCard from '@/components/features/estimates/ProfileComparisonCard';
 import PeepaProfileCard from '@/components/features/peepa/PeepaProfileCard';
-import { fetchInventory, fetchPeepa } from '@/api';
+import { fetchInventory, fetchPeepa } from '@/api/products';
 import type {
   InventoryProfile,
   PeepaProfile,
