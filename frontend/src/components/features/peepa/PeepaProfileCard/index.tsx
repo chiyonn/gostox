@@ -37,7 +37,7 @@ const PeepaProfileCard = ({ profile }: { profile: PeepaProfile }) => {
             <tbody>
               <tr>
                 <th>販売価格:</th>
-                <td>{profile.Stats.buyBoxPrice}</td>
+                <td>{profile.Stats.BuyBoxPrice}</td>
               </tr>
               <tr>
                 <th>ブランド:</th>
