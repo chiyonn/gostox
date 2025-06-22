@@ -8,6 +8,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
+import SellerTip from '@/components/atomics/organisms/SellerTip';
 import FBATip from '@/components/atomics/molecules/FBATip';
 import PrimeTip from '@/components/atomics/molecules/PrimeTip';
 import { keepaMinutesToDate } from '@/utils/peepa';
@@ -27,7 +28,9 @@ const OfferCard = ({ offer }: { offer: Offer }) => {
   return (
     <div className={styles.container}>
       <div className={styles.statusContainer}>
-        <p><strong>出品者ID:</strong> {offer.SellerID}</p>
+        <p><strong>出品者ID:</strong>
+          <SellerTip sellerId={offer.SellerID} />
+        </p>
         <p><strong>最終在庫更新:</strong> {keepaMinutesToDate(offer.LastStockUpdate)}</p>
         {offer.IsFBA && <FBATip />}
         {offer.IsPrime && <PrimeTip />}

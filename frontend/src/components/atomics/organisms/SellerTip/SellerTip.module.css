@@ -1,0 +1,5 @@
+.sellerBtn {
+  color: #FF9900;
+  background-color: var(--bg-main);
+  border: 1px solid #FF9900;
+}
