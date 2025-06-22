@@ -1,8 +1,8 @@
 import ImageSmall from '@/components/atomics/atoms/ImageSmall';
 import AsinTip from '@/components/atomics/organisms/AsinTip';
 import NumOfOffersStatus from "@/components/atomics/organisms/NumOfOffersStatus";
+import SalesRankDropsStatus from "@/components/atomics/organisms/SalesRankDropsStatus";
 import OfferCard from '@/components/features/peepa/OfferCard';
-import Tip from "@/components/atomics/atoms/Tip";
 import { keepaMinutesToDate } from '@/utils/peepa';
 import styles from './PeepaProfileCard.module.css';
 import type {
@@ -18,6 +18,7 @@ const PeepaProfileCard = ({ profile }: { profile: PeepaProfile }) => {
 
       <div className={styles.screenings}>
         <NumOfOffersStatus offers={profile?.Offers?.length} />
+        <SalesRankDropsStatus times={profile.Stats.SalesRankDrops30} />
       </div>
 
       <div className={styles.meta}>
