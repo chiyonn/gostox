@@ -57,6 +57,12 @@ const PeepaProfileCard = ({ profile }: { profile: PeepaProfile }) => {
             </tbody>
           </table>
 
+          <p>ランキング下降回数</p>
+          <p>30日: {profile.Stats.SalesRankDrops30}</p>
+          <p>90日: {profile.Stats.SalesRankDrops90}</p>
+          <p>180日: {profile.Stats.SalesRankDrops180}</p>
+          <p>365日: {profile.Stats.SalesRankDrops365}</p>
+
           <p>カテゴリ</p>
           <table>
             <thead>

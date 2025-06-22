@@ -30,6 +30,10 @@ type Offer = {
 
 export type Stats = {
   BuyBoxPrice: number;
+  SalesRankDrops30: number;
+  SalesRankDrops90: number;
+  SalesRankDrops180: number;
+  SalesRankDrops365: number;
 }
 
 export type PeepaProfile = {
