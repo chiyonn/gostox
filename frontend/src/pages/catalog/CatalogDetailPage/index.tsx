@@ -18,7 +18,7 @@ const CatalogDetailPage = () => {
   const [original, setOriginal] = useState<InventoryProfile | null>(null);
   const [source, setSource] = useState<PeepaProfile | null>(null);
   const [merged, setMerged] = useState<MergedProfile | null>(null);
-  const [error, setError] = useState<string | null>(null); // ← 追加
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!asin) {
