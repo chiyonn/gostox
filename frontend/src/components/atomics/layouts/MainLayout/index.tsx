@@ -6,7 +6,8 @@ import { useState } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
-import AsinSearch from '../../../features/global/AsinSearch';
+import AsinSearch from '@/components/features/global/AsinSearch';
+import ServerStatusTip from '@/components/atomics/organisms/ServerStatusTip';
 
 const MainLayout: FC = () => {
   const [isOpenLeftSidebar, setIsOpenLeftSidebar] = useState(false);
@@ -22,6 +23,7 @@ const MainLayout: FC = () => {
           {isOpenLeftSidebar ? <MenuIcon /> : <MenuOpenIcon />}
         </button>
         <AsinSearch />
+        <ServerStatusTip hostname="peepa" />
       </header>
       <div className={styles.contentWrapper}>
         {isOpenLeftSidebar && (

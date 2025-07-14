@@ -28,9 +28,9 @@ const OfferCard = ({ offer }: { offer: Offer }) => {
   return (
     <div className={styles.container}>
       <div className={styles.statusContainer}>
-        <p><strong>出品者ID:</strong>
+        <div><strong>出品者ID:</strong>
           <SellerTip sellerId={offer.SellerID} />
-        </p>
+        </div>
         <p><strong>最終在庫更新:</strong> {keepaMinutesToDate(offer.LastStockUpdate)}</p>
         {offer.IsFBA && <FBATip />}
         {offer.IsPrime && <PrimeTip />}
