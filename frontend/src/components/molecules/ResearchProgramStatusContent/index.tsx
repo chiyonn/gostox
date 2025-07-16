@@ -1,19 +1,18 @@
-const ResearchProgramStatusContent = () => {
+
+export type ProgramResearchStatus = {
+  status: boolean
+}
+
+const ResearchProgramStatusContent = ({ status }: ProgramResearchStatus) => {
   return (
     <div>
       <table>
-        <tr>
-          <th>電源</th>
-          <td>OFF</td>
-        </tr>
-        <tr>
-          <th>Inbox</th>
-          <td>4</td>
-        </tr>
-        <tr>
-          <th>Something</th>
-          <td>9999</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>電源</th>
+            <td>{status ? 'ON' : 'OFF'}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
