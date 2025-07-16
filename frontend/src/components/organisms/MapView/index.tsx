@@ -1,9 +1,5 @@
 import React from 'react';
 import IsometricObject from '@components/molecules/IsometricObject';
-import serversImg from '@assets/isometrics/servers.png';
-import houseImg from '@assets/isometrics/house.png';
-import warehouseImg from '@assets/isometrics/warehouse.png';
-import warehouseLargeImg from '@assets/isometrics/warehouse-large.png';
 import styles from './MapView.module.css';
 
 // 傾き22.5度の等角投影に基づいたマップスケール
@@ -15,7 +11,7 @@ const SIN = Math.sin(ANGLE_RAD); // ≈ 0.383
 
 type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
 
-type RenderObject = {
+export type RenderObject = {
   x: number;
   y: number;
   img: string;
@@ -25,47 +21,15 @@ type RenderObject = {
   flip?: boolean;
 };
 
-const objects: RenderObject[] = [
-  {
-    x: -3,
-    y: 5,
-    img: warehouseImg,
-    size: 300,
-    label: '王さんの倉庫',
-    position: 'bottom',
-    flip: true
-  },
-  {
-    x: 4,
-    y: 4,
-    img: serversImg,
-    size: 100,
-    label: 'リサーチプログラム',
-    position: 'left'
-  },
-  {
-    x: 5,
-    y: 0,
-    img: houseImg,
-    size: 180,
-    label: '宮内倉庫',
-    position: 'right'
-  },
-  {
-    x: 9,
-    y: 8,
-    img: warehouseLargeImg,
-    size: 300,
-    label: 'Amazon倉庫',
-    position: 'left'
-  },
-];
+interface MapViewProps {
+  objects: RenderObject[];
+}
 
-// 中央座標のオフセットを計算
-const centerX = (Math.min(...objects.map(o => o.x)) + Math.max(...objects.map(o => o.x))) / 2;
-const centerY = (Math.min(...objects.map(o => o.y)) + Math.max(...objects.map(o => o.y))) / 2;
+const MapView: React.FC<MapViewProps> = ({ objects }) => {
+  // 中央座標のオフセットを計算
+  const centerX = (Math.min(...objects.map(o => o.x)) + Math.max(...objects.map(o => o.x))) / 2;
+  const centerY = (Math.min(...objects.map(o => o.y)) + Math.max(...objects.map(o => o.y))) / 2;
 
-const MapView: React.FC = () => {
   return (
     <div className={styles.container}>
       {objects.map((obj, i) => {
