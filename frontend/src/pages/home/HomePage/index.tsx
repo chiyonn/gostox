@@ -1,5 +1,6 @@
 import MapView from '@components/organisms/MapView';
 import type { RenderObject } from '@components/organisms/MapView';
+import ResearchProgramStatusContent from '@components/molecules/ResearchProgramStatusContent';
 import serversImg from '@assets/isometrics/servers.png';
 import houseImg from '@assets/isometrics/house.png';
 import warehouseImg from '@assets/isometrics/warehouse.png';
@@ -13,7 +14,7 @@ const objects: RenderObject[] = [
     img: warehouseImg,
     size: 300,
     label: '王さんの倉庫',
-    content: <div>你好</div>,
+    content: <div>準備中</div>,
     position: 'bottom',
     flip: true
   },
@@ -23,7 +24,7 @@ const objects: RenderObject[] = [
     img: serversImg,
     size: 100,
     label: 'リサーチプログラム',
-    content: <div>hello</div>,
+    content: <ResearchProgramStatusContent />,
     position: 'left'
   },
   {
@@ -32,8 +33,8 @@ const objects: RenderObject[] = [
     img: houseImg,
     size: 180,
     label: '宮内倉庫',
-    content: <div>hello</div>,
-    position: 'right'
+    content: <div>準備中</div>,
+    position: 'left'
   },
   {
     x: 9,
@@ -41,7 +42,7 @@ const objects: RenderObject[] = [
     img: warehouseLargeImg,
     size: 300,
     label: 'Amazon倉庫',
-    content: <div>hello</div>,
+    content: <div>準備中</div>,
     position: 'left'
   },
 ];
