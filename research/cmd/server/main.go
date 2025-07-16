@@ -4,15 +4,17 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/chiyonn/gostox-research/internal/middleware"
 	"github.com/chiyonn/gostox-research/internal/router"
 )
 
 func main() {
-	r := router.New()
+	apiRouter := middleware.JSONContentTypeMiddleware(router.NewAPIRoutes())
+	//imageRouter := router.NewImageRoutes()
 
-	addr := "0.0.0.0:8080"
-	log.Printf("Server starting at http://localhost%s", addr)
-	if err := http.ListenAndServe(addr, r); err != nil {
-		log.Fatalf("Server failed: %v", err)
-	}
+	mux := http.NewServeMux()
+	mux.Handle("/api/", apiRouter)
+	//mux.Handle("/images/", imageRouter)
+
+	log.Fatal(http.ListenAndServe("0.0.0.0:8080", mux))
 }
