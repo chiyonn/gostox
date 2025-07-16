@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: dev-gostox-frontend
+    environment:
+      - VITE_PEEPA_URL=${VITE_PEEPA_URL}
+      - VITE_ALLOWED_HOSTS=${VITE_ALLOWED_HOSTS}
+    volumes:
+      - ./frontend:/app:cached
+    ports:
+      - "5173:5173"

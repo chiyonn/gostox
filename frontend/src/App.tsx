@@ -1,16 +1,17 @@
-import { Routes, Route } from 'react-router-dom';
-import DashboardPage from "@/pages/DashboardPage";
-import CatalogDetailPage from "@/pages/catalog/CatalogDetailPage";
-import MainLayout from "@/components/atomics/layouts/MainLayout";
-import "./App.css";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import MainLayout from '@components/layout/MainLayout'
+import HomePage from '@pages/home/HomePage'
 
-const App = () => (
-  <Routes>
-    <Route element={<MainLayout />}>
-      <Route path="/" element={<DashboardPage />} />
-      <Route path="/catalog/:asin" element={<CatalogDetailPage />} />
-    </Route>
-  </Routes>
-);
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
-export default App;
+export default App

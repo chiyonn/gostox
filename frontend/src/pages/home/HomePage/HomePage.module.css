@@ -1,0 +1,22 @@
+.container {
+  height: 100%;
+  width: 100%;
+  background-color: #ffffff;
+
+  background-image:
+    repeating-linear-gradient(
+      22.5deg,
+      rgba(0,0,10,0.1) 0,
+      rgba(0,0,10,0.1) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      -22.5deg,
+      rgba(0,0,10,0.1) 0,
+      rgba(0,0,10,0.1) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  background-size: 52px;
+}

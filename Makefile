@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 ENV ?= dev
-COMPOSE := docker compose -f deploy/compose.$(ENV).yaml -p gostox
+COMPOSE := docker compose -f compose.$(ENV).yaml -p gostox
 
 .PHONY: build
 build: ## build containers

@@ -1,0 +1,101 @@
+.container {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.label {
+  position: absolute;
+  top: -0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  background: rgba(34, 34, 34, 0.8);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.image {
+  display: block;
+  transition: transform 0.1s ease-in-out;
+}
+.image:hover {
+  transform: scale(1.1);
+}
+
+.bubble {
+  position: absolute;
+  transform: scale(0);
+  transition: transform 0.1s ease-in-out;
+  pointer-events: none;
+
+  color: #fff;
+  background-color: #222;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* 上方向 */
+.bubble--top {
+  bottom: 100%;
+  left: 50%;
+  transform-origin: bottom center;
+}
+.bubble--top::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: #fff transparent transparent transparent;
+}
+
+/* 下方向 */
+.bubble--bottom {
+  top: 100%;
+  left: 50%;
+  transform-origin: top center;
+}
+.bubble--bottom::after {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-color: transparent transparent #fff transparent;
+}
+
+/* 左方向 */
+.bubble--left {
+  right: 100%;
+  top: 50%;
+  transform-origin: center right;
+}
+.bubble--left::after {
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent transparent transparent #fff;
+}
+
+/* 右方向 */
+.bubble--right {
+  left: 100%;
+  top: 50%;
+  transform-origin: center left;
+}
+.bubble--right::after {
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-color: transparent #fff transparent transparent;
+}
+
+/* 表示状態 */
+.visible {
+  transform: scale(1);
+  pointer-events: auto;
+}
