@@ -2,15 +2,15 @@ import { useState } from 'react';
 import type { FC, ReactNode } from 'react';
 import styles from './IsometricObject.module.css';
 
-type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
+export type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
 
 interface Props {
   src: string;
   size?: number;
   flip?: boolean;
   label: string;
-  bubbleContent: ReactNode;
-  bubblePosition?: BubblePosition;
+  content: ReactNode;
+  position?: BubblePosition;
   onClick?: () => void;
 }
 
@@ -19,15 +19,15 @@ const IsometricObject: FC<Props> = ({
   size = 100,
   flip = false,
   label,
-  bubbleContent,
-  bubblePosition = 'top',
+  content,
+  position = 'top',
   onClick,
 }) => {
   const [isBubbleVisible, setBubbleVisible] = useState(false);
 
   const bubbleClass = [
     styles.bubble,
-    styles[`bubble--${bubblePosition}`],
+    styles[`bubble--${position}`],
     isBubbleVisible && styles.visible,
   ]
     .filter(Boolean)
@@ -51,7 +51,7 @@ const IsometricObject: FC<Props> = ({
           transform: flip ? 'scaleX(-1)' : 'scaleX(1)',
         }}
       />
-      <div className={bubbleClass}>{bubbleContent}</div>
+      <div className={bubbleClass}>{content}</div>
     </div>
   );
 };

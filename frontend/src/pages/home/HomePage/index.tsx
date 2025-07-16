@@ -13,6 +13,7 @@ const objects: RenderObject[] = [
     img: warehouseImg,
     size: 300,
     label: '王さんの倉庫',
+    content: <div>你好</div>,
     position: 'bottom',
     flip: true
   },
@@ -22,6 +23,7 @@ const objects: RenderObject[] = [
     img: serversImg,
     size: 100,
     label: 'リサーチプログラム',
+    content: <div>hello</div>,
     position: 'left'
   },
   {
@@ -30,6 +32,7 @@ const objects: RenderObject[] = [
     img: houseImg,
     size: 180,
     label: '宮内倉庫',
+    content: <div>hello</div>,
     position: 'right'
   },
   {
@@ -38,6 +41,7 @@ const objects: RenderObject[] = [
     img: warehouseLargeImg,
     size: 300,
     label: 'Amazon倉庫',
+    content: <div>hello</div>,
     position: 'left'
   },
 ];

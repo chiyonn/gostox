@@ -1,5 +1,7 @@
 import React from 'react';
+import type { ReactNode } from 'react';
 import IsometricObject from '@components/molecules/IsometricObject';
+import type { BubblePosition } from '@components/molecules/IsometricObject';
 import styles from './MapView.module.css';
 
 // 傾き22.5度の等角投影に基づいたマップスケール
@@ -9,8 +11,6 @@ const ANGLE_RAD = (ANGLE_DEG * Math.PI) / 180;
 const COS = Math.cos(ANGLE_RAD); // ≈ 0.924
 const SIN = Math.sin(ANGLE_RAD); // ≈ 0.383
 
-type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
-
 export type RenderObject = {
   x: number;
   y: number;
@@ -18,6 +18,7 @@ export type RenderObject = {
   size: number;
   label: string;
   position: BubblePosition;
+  content: ReactNode;
   flip?: boolean;
 };
 
@@ -51,8 +52,8 @@ const MapView: React.FC<MapViewProps> = ({ objects }) => {
               src={obj.img}
               size={obj.size}
               label={obj.label}
-              bubbleContent={<div>詳細情報</div>}
-              bubblePosition={obj.position}
+              content={obj.content}
+              position={obj.position}
               flip={obj.flip}
             />
           </div>
