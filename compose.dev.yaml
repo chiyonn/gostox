@@ -5,9 +5,20 @@ services:
       dockerfile: Dockerfile.dev
     container_name: dev-gostox-frontend
     environment:
-      - VITE_PEEPA_URL=${VITE_PEEPA_URL}
-      - VITE_ALLOWED_HOSTS=${VITE_ALLOWED_HOSTS}
+      - VITE_RESEARCH_API_HOST=${RESEARCH_API_HOST}
     volumes:
       - ./frontend:/app:cached
     ports:
       - "5173:5173"
+
+  research:
+    build:
+      context: ./research
+      dockerfile: Dockerfile.dev
+    container_name: dev-gostox-research
+    environment:
+      - CORS_ALLOWED_ORIGINS=${CORS_ALLOWED_ORIGINS}
+    volumes:
+      - ./research:/app
+    ports:
+      - "8081:8080"
