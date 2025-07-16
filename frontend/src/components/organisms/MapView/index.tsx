@@ -12,6 +12,7 @@ const ANGLE_DEG = 22.5;
 const ANGLE_RAD = (ANGLE_DEG * Math.PI) / 180;
 const COS = Math.cos(ANGLE_RAD); // ≈ 0.924
 const SIN = Math.sin(ANGLE_RAD); // ≈ 0.383
+
 type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
 
 type RenderObject = {
@@ -21,7 +22,8 @@ type RenderObject = {
   size: number;
   label: string;
   position: BubblePosition;
-}
+  flip?: boolean;
+};
 
 const objects: RenderObject[] = [
   {
@@ -30,7 +32,8 @@ const objects: RenderObject[] = [
     img: warehouseImg,
     size: 300,
     label: '王さんの倉庫',
-    position: 'bottom'
+    position: 'bottom',
+    flip: true
   },
   {
     x: 4,
@@ -64,9 +67,7 @@ const centerY = (Math.min(...objects.map(o => o.y)) + Math.max(...objects.map(o 
 
 const MapView: React.FC = () => {
   return (
-    <div
-      className={styles.container}
-    >
+    <div className={styles.container}>
       {objects.map((obj, i) => {
         const relX = obj.x - centerX;
         const relY = obj.y - centerY;
@@ -79,7 +80,7 @@ const MapView: React.FC = () => {
             style={{
               position: 'absolute',
               left: `calc(50% + ${isoX}px)`,
-              top: `${isoY + 150}px`, // 高さ中央を基準にして配置
+              top: `${isoY + 150}px`,
             }}
           >
             <IsometricObject
@@ -88,6 +89,7 @@ const MapView: React.FC = () => {
               label={obj.label}
               bubbleContent={<div>詳細情報</div>}
               bubblePosition={obj.position}
+              flip={obj.flip}
             />
           </div>
         );

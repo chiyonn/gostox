@@ -6,20 +6,22 @@ type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
 
 interface Props {
   src: string;
+  size?: number;
+  flip?: boolean;
   label: string;
   bubbleContent: ReactNode;
   bubblePosition?: BubblePosition;
   onClick?: () => void;
-  size?: number;
 }
 
 const IsometricObject: FC<Props> = ({
   src,
+  size = 100,
+  flip = false,
   label,
   bubbleContent,
   bubblePosition = 'top',
   onClick,
-  size = 100, // デフォルトサイズ
 }) => {
   const [isBubbleVisible, setBubbleVisible] = useState(false);
 
@@ -43,7 +45,11 @@ const IsometricObject: FC<Props> = ({
         className={styles.image}
         src={src}
         alt={label}
-        style={{ width: size, height: size }}
+        style={{
+          width: size,
+          height: size,
+          transform: flip ? 'scaleX(-1)' : 'scaleX(1)',
+        }}
       />
       <div className={bubbleClass}>{bubbleContent}</div>
     </div>
