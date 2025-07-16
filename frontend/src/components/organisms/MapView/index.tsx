@@ -4,6 +4,7 @@ import serversImg from '@assets/isometrics/servers.png';
 import houseImg from '@assets/isometrics/house.png';
 import warehouseImg from '@assets/isometrics/warehouse.png';
 import warehouseLargeImg from '@assets/isometrics/warehouse-large.png';
+import styles from './MapView.module.css';
 
 // 傾き22.5度の等角投影に基づいたマップスケール
 const TILE_SCALE = 64; // スケーリング係数（画像サイズに合わせて調整）
@@ -11,8 +12,18 @@ const ANGLE_DEG = 22.5;
 const ANGLE_RAD = (ANGLE_DEG * Math.PI) / 180;
 const COS = Math.cos(ANGLE_RAD); // ≈ 0.924
 const SIN = Math.sin(ANGLE_RAD); // ≈ 0.383
+type BubblePosition = 'top' | 'bottom' | 'left' | 'right';
 
-const objects = [
+type RenderObject = {
+  x: number;
+  y: number;
+  img: string;
+  size: number;
+  label: string;
+  position: BubblePosition;
+}
+
+const objects: RenderObject[] = [
   {
     x: -3,
     y: 5,
@@ -54,11 +65,7 @@ const centerY = (Math.min(...objects.map(o => o.y)) + Math.max(...objects.map(o 
 const MapView: React.FC = () => {
   return (
     <div
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: 300,
-      }}
+      className={styles.container}
     >
       {objects.map((obj, i) => {
         const relX = obj.x - centerX;
